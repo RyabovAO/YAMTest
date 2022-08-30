@@ -7,23 +7,26 @@ import java.util.stream.Collectors;
 public class NotebookPage extends Form {
 
     private final static String SHOW_ALL_BRAND_BUTTON =
-            "//*[contains(@data-filter-id, '7893318')]//*[contains(@class, '_2Pukk')]";
+            "//*[contains(@data-filter-id, '7893318')]//*[contains(@role, 'button')]";
     private final static String BRAND_FIELD =
             "//*[contains(@class, '_31fu1')]//*[contains(text(), 'Найти производителя')]//following-sibling::input";
     private final static String BRAND_NAME = "Lenovo";
     private final static String BRAND_CHECKBOX =
-            "//*[contains(@data-filter-value-id, '152981')]//*[contains(@class, '_2XaWK')]";
+            "//*[contains(@data-filter-value-id, '152981')]//*[contains(@role, 'checkbox')]";
     private final static String MIN_PRICE_FIELD =
             "//*[contains(@data-filter-id, 'glprice')]//*[contains(text(), 'от')]//following-sibling::input";
     private final static String MAX_PRICE_FIELD =
             "//*[contains(@data-filter-id, 'glprice')]//*[contains(text(), 'до')]//following-sibling::input";
-    private final static String BRAND_NAME_LOCATOR = "//*[contains(@data-tid, '2e5bde87')]";
+    private final static String BRAND_NAME_LOCATOR = "//*[contains(@data-zone-name, 'title')]";
     private final static String PRICE_LOCATOR =
             "//*[contains(@class, '_3NaXx _33ZFz _2m5MZ')]//*[contains(@data-auto, 'mainPrice')]" +
                     "//*[not(contains(@class, '-B-PA'))]";
     private final static String MIN_PRICE = "25000";
     private final static String MAX_PRICE = "30000";
-    private final static String NOTEBOOK_PAGE_LOCATOR = "//*[contains(@class, '_1c3hh _36SPc _1TjXe')]";
+    private final static String NOTEBOOK_PAGE_LOCATOR =
+            "//*[contains(@data-apiary-widget-name, '@marketplace/SearchTitle')]";
+    private final static String TOOLTIP_LOCATOR =
+            "//*[contains(@role, 'tooltip')]//*[contains(@data-auto, 'filter-found-visible-tooltip')]";
 
     public void chooseBrand() {
         button.clickButton(SHOW_ALL_BRAND_BUTTON);
@@ -51,6 +54,7 @@ public class NotebookPage extends Form {
 
     public boolean priceIsCorrect() {
         boolean result = false;
+        label.elementIsVisible(TOOLTIP_LOCATOR);
         List<WebElement> elementList = label.findElements(PRICE_LOCATOR);
         List<String> priceList = elementList.stream().map(WebElement::getText).collect(Collectors.toList());
         for (String price : priceList) {

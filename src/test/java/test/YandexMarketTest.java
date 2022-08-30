@@ -22,7 +22,9 @@ public class YandexMarketTest extends BaseTest {
         startPage.catalogForm.selectSectionComputer();
         startPage.computerForm.selectNotebookSection();
 
-        Assert.assertTrue(notebookPage.notebookPageIsOpen(), "Notebook page isn't open");
+        Assert.assertTrue(
+                notebookPage.notebookPageIsOpen(),
+                "Notebook page isn't open");
 
         notebookPage.chooseBrand();
         notebookPage.setPrice();
