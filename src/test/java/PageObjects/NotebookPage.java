@@ -7,19 +7,19 @@ import java.util.stream.Collectors;
 public class NotebookPage extends Form {
 
     private final static String SHOW_ALL_BRAND_BUTTON =
-            "//*[contains(@data-filter-id, '7893318')]//*[contains(@role, 'button')]";
+            "//div[contains(@data-zone-data, 'Производитель')]//span[contains(@role, 'button')]";
     private final static String BRAND_FIELD =
-            "//*[contains(@class, '_31fu1')]//*[contains(text(), 'Найти производителя')]//following-sibling::input";
+            "//label[contains(text(), 'Найти производителя')]//following-sibling::input";
     private final static String BRAND_NAME = "Lenovo";
     private final static String BRAND_CHECKBOX =
-            "//*[contains(@data-filter-value-id, '152981')]//*[contains(@role, 'checkbox')]";
+            "//div[contains(@data-zone-data, 'Производитель')]//span[contains(@role, 'button')]";
     private final static String MIN_PRICE_FIELD =
             "//*[contains(@data-filter-id, 'glprice')]//*[contains(text(), 'от')]//following-sibling::input";
     private final static String MAX_PRICE_FIELD =
             "//*[contains(@data-filter-id, 'glprice')]//*[contains(text(), 'до')]//following-sibling::input";
     private final static String BRAND_NAME_LOCATOR = "//*[contains(@data-zone-name, 'title')]";
     private final static String PRICE_LOCATOR =
-            "//*[contains(@class, '_3NaXx _33ZFz _2m5MZ')]//*[contains(@data-auto, 'mainPrice')]" +
+            "//div[contains(@data-zone-name, 'price')]//span[contains(@data-auto, 'mainPrice')]" +
                     "//*[not(contains(@class, '-B-PA'))]";
     private final static String MIN_PRICE = "25000";
     private final static String MAX_PRICE = "30000";
